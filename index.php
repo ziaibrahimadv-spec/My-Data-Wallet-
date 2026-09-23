@@ -763,6 +763,36 @@ body{background:#0F172A}
 #pw-app .auth-icon svg{width:96px;height:96px}
 #pw-app #passModal .dmi{width:69px;height:69px;flex:0 0 69px;border-radius:14px}
 #pw-app #passModal .dmi svg{width:33px;height:33px}
+#pw-app .backup-pill{width:100%;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;background:var(--sf);border:1px solid var(--bd);color:var(--tx2);font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s,color .15s;font-family:inherit;text-align:left}
+#pw-app .backup-pill:hover{border-color:var(--ac);color:var(--ac)}
+#pw-app .bp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--mu)}
+#pw-app .bp-dot.ok{background:var(--ok)}
+#pw-app .bp-dot.warn{background:var(--warn)}
+#pw-app .bp-dot.err{background:var(--err)}
+#pw-app .bp-text{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+#pw-app .backup-current-row{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--sf);border:1px solid var(--bd);border-radius:9px;margin-bottom:18px;font-size:13.5px}
+#pw-app .backup-current-row .bcr-label{color:var(--mu);font-weight:600}
+#pw-app .backup-current-row .bcr-value{color:var(--tx);font-weight:600}
+
+#pw-app .backup-list{display:flex;flex-direction:column;gap:10px;margin-bottom:80px}
+#pw-app .backup-row{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--sf);border:1px solid var(--bd);border-radius:9px;transition:border-color .15s}
+#pw-app .backup-row:hover{border-color:var(--bd2)}
+#pw-app .backup-row .br-icon{width:26px;height:26px;flex:0 0 26px;display:grid;place-items:center;color:var(--ac)}
+#pw-app .backup-row .br-icon svg{width:22px;height:22px}
+#pw-app .backup-row .br-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+#pw-app .backup-row .br-name{font-size:14px;font-weight:600;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:ui-monospace,Menlo,Consolas,monospace}
+#pw-app .backup-row .br-meta{font-size:12px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#pw-app .backup-row .br-actions{display:flex;gap:8px;flex:0 0 auto}
+#pw-app .backup-row .br-actions button{padding:8px 14px;border-radius:6px;font-size:12.5px;font-weight:600;background:var(--sf2);border:1px solid var(--bd);color:var(--tx2);transition:.15s;cursor:pointer;font-family:inherit;letter-spacing:.2px;white-space:nowrap}
+#pw-app .backup-row .br-actions button:hover{color:var(--ac);border-color:var(--ac)}
+#pw-app .backup-row .br-actions button.dng{color:var(--err);border-color:rgba(239,68,68,.35)}
+#pw-app .backup-row .br-actions button.dng:hover{color:#fff;background:var(--err);border-color:var(--err)}
+#pw-app .backup-empty{text-align:center;padding:60px 20px;color:var(--mu);font-size:14.5px}
+
+#pw-app #restoreModal .warn-strong{color:var(--err);font-weight:700;letter-spacing:.5px;text-transform:none}
+#pw-app #restoreModal .dmb input{border-color:rgba(239,68,68,.4)}
+#pw-app #restoreModal .dmb input:focus{border-color:var(--err)}
 </style>
 
 <!-- Auth overlay (Login) -->
@@ -813,6 +843,14 @@ body{background:#0F172A}
 <div class="sd"></div>
 <div class="sf"><h4>Font size</h4><div class="seg fsSeg"><button data-fs="s">Small</button><button data-fs="m">Medium</button><button data-fs="l">Large</button></div><button class="abtn sec sm fsSetDefault" type="button">Set as Default</button><div class="sf-hint fsDefaultHint">Default: Medium</div></div>
 <div class="sf"><h4>Sample Data Mode</h4><button class="demo-toggle" id="demoToggle"><span class="dt-label">Sample Data Mode</span><span class="dt-state" id="demoState">OFF</span></button><button class="demo-update" id="demoUpdateBtn" type="button" title="Reload demo data from the built-in seed" aria-label="Update demo data"><svg><use href="#i-cg"/></svg><span>Update Sample Data</span></button><div class="sf-hint">Load sample projects and cards to preview the app.</div></div>
+<div class="sf">
+  <h4>Backups</h4>
+  <button class="backup-pill" id="sidebarBackupPill" type="button">
+    <span class="bp-dot" id="bpDot"></span>
+    <span class="bp-text" id="bpText">Loading…</span>
+  </button>
+  <div class="sf-hint" id="bpSub">—</div>
+</div>
 </aside>
 
 <main class="mn"><div class="mi">
@@ -1032,10 +1070,45 @@ body{background:#0F172A}
 <input type="file" id="admFile" accept="application/json" style="display:none">
 </div>
 </div>
+<div class="card">
+  <h4><svg><use href="#i-dl"/></svg>Backups</h4>
+  <p class="desc" style="margin-bottom:12px">Automatic daily snapshots of your wallet. Restore to roll back.</p>
+  <div class="sf-hint" id="settingsBackupInfo" style="margin-bottom:14px">—</div>
+  <div class="actions" style="margin-top:0">
+    <button class="abtn" id="settingsBackupNowBtn" type="button">
+      <svg><use href="#i-ck"/></svg>Create Backup
+    </button>
+    <button class="abtn sec" id="settingsManageBackupsBtn" type="button">
+      <svg><use href="#i-dl"/></svg>Manage Backups
+    </button>
+  </div>
+</div>
 </section>
 </div>
 </div></div>
 </div></div>
+
+<!-- Backups Panel -->
+<div class="ap" id="backupPanel" role="dialog" aria-modal="true">
+  <div class="apc">
+    <div class="aph">
+      <h2><svg><use href="#i-dl"/></svg>Backups <span class="sub">Snapshots of your wallet database</span></h2>
+      <button class="close" id="backupClose" aria-label="Close Backups"><svg><use href="#i-x"/></svg></button>
+    </div>
+    <div class="apb">
+      <div class="backup-current-row">
+        <span class="bcr-label">Current database:</span>
+        <span class="bcr-value" id="backupCurrentValue">—</span>
+      </div>
+      <div class="actions" style="margin-top:0;margin-bottom:22px">
+        <button class="abtn" id="backupCreateBtn" type="button">
+          <svg><use href="#i-ck"/></svg>Create New Backup
+        </button>
+      </div>
+      <div class="backup-list" id="backupList"></div>
+    </div>
+  </div>
+</div>
 
 <!-- Trash Section -->
 <div class="ap" id="trashPanel" role="dialog" aria-modal="true"><div class="apc">
@@ -1105,6 +1178,29 @@ body{background:#0F172A}
 <button class="abtn" id="acSaveBtn" type="button"><svg><use href="#i-ck"/></svg>Update Passcode</button>
 </div>
 </div>
+</div>
+
+<!-- Restore Confirmation Modal -->
+<div class="dm" id="restoreModal" role="dialog" aria-modal="true">
+  <div class="dmc">
+    <div class="dmh">
+      <div class="dmi warn"><svg><use href="#i-wr"/></svg></div>
+      <div class="txt">
+        <h3>Restore this backup?</h3>
+        <p>This will <b class="warn-strong">REPLACE</b> your current database with the selected backup.</p>
+        <p>A snapshot of your current database will be saved first as a safety net.</p>
+        <p class="warn-strong">Your passcode will also revert to whatever it was on that date.</p>
+      </div>
+    </div>
+    <div class="dmb">
+      <label>Type <b class="warn-strong">restore</b> to confirm</label>
+      <input type="text" id="restoreInput" placeholder="restore" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="dmf">
+      <button class="abtn sec" id="restoreCancel" type="button">Cancel</button>
+      <button class="abtn dng" id="restoreConfirmBtn" type="button" disabled><svg><use href="#i-dl"/></svg>Restore Database</button>
+    </div>
+  </div>
 </div>
 
 <!-- Toast -->
@@ -2681,10 +2777,12 @@ document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
   if (document.querySelector('#md.on')) return;
   if (document.querySelector('#adminPanel.on')) return;
+  if (document.querySelector('#backupPanel.on')) return;
   if (document.querySelector('#trashPanel.on')) return;
   if (document.querySelector('#notesModal.on')) return;
   if (document.querySelector('#confirmModal.on')) return;
   if (document.querySelector('#passModal.on')) return;
+  if (document.querySelector('#restoreModal.on')) return;
   if (document.querySelector('#sg.on')) return;
   if (typeof activeProject === 'undefined') return;
   if (activeProject === '*') return;
@@ -3227,6 +3325,175 @@ if(demoUpdateBtn)demoUpdateBtn.onclick=()=>{
 };
 updateDemoToggleUI();
 
+/* ---------- Backups ---------- */
+let BACKUPS_CACHE=[];
+
+const fmtBackupAge=iso=>{
+  if(!iso)return '—';
+  const t=Date.parse(String(iso).replace(' ','T')+'Z');
+  if(isNaN(t))return '—';
+  const diff=Math.max(0,Date.now()-t);
+  const s=Math.floor(diff/1000);
+  if(s<60)return 'just now';
+  const m=Math.floor(s/60);if(m<60)return m+' min ago';
+  const h=Math.floor(m/60);if(h<24)return h+'h ago';
+  const d=Math.floor(h/24);if(d<30)return d+'d ago';
+  return fmtCardDate(new Date(t).toISOString());
+};
+
+const renderBackupPill=()=>{
+  const dot=$('#bpDot');const txt=$('#bpText');const sub=$('#bpSub');
+  if(!dot||!txt||!sub)return;
+  const last=BACKUPS_CACHE[0];
+  dot.classList.remove('ok','warn','err');
+  if(!last){
+    dot.classList.add('err');
+    txt.textContent='No backups yet';
+    sub.textContent='Click to create one';
+  }else{
+    const ageSec=(Date.now()-new Date(String(last.created).replace(' ','T')+'Z').getTime())/1000;
+    if(ageSec<36*3600)dot.classList.add('ok');
+    else if(ageSec<72*3600)dot.classList.add('warn');
+    else dot.classList.add('err');
+    txt.textContent='Last: '+fmtBackupAge(last.created);
+    sub.textContent=BACKUPS_CACHE.length+' snapshot'+(BACKUPS_CACHE.length===1?'':'s')+' · '+(BACKUPS_CACHE.total_size_h||'');
+  }
+};
+
+const loadBackups=async()=>{
+  try{
+    const res=await fetch('api.php?action=list_backups',{credentials:'same-origin'});
+    if(res.status===401){appStarted=false;authShowLogin();return null;}
+    const json=await res.json().catch(()=>null);
+    if(!json||!json.ok)return null;
+    BACKUPS_CACHE=(json.data&&json.data.backups)||[];
+    BACKUPS_CACHE.total_size_h=json.data.total_size_h||'';
+    BACKUPS_CACHE.current=json.data.current||null;
+    renderBackupPill();
+    const info=$('#settingsBackupInfo');
+    if(info){
+      const last=BACKUPS_CACHE[0];
+      info.textContent=last
+        ? 'Last: '+fmtBackupAge(last.created)+' · '+BACKUPS_CACHE.length+' backups · '+(BACKUPS_CACHE.total_size_h||'')
+        : 'No backups yet — click Create Backup to make one.';
+    }
+    return json.data;
+  }catch(e){return null}
+};
+
+const renderBackupList=()=>{
+  const el=$('#backupList');if(!el)return;
+  const cur=$('#backupCurrentValue');
+  const current=BACKUPS_CACHE.current;
+  if(cur)cur.textContent=current?(current.size_h+' · modified '+fmtBackupAge(current.modified)):'—';
+  if(!BACKUPS_CACHE.length){
+    el.innerHTML='<div class="backup-empty">No backups yet. Click "Create New Backup" above.</div>';
+    return;
+  }
+  el.innerHTML=BACKUPS_CACHE.map(b=>(
+    '<div class="backup-row" data-file="'+esc(b.filename)+'">'+
+    '<span class="br-icon"><svg><use href="#i-dl"/></svg></span>'+
+    '<div class="br-info">'+
+    '<div class="br-name">'+esc(b.filename)+'</div>'+
+    '<div class="br-meta">'+esc(b.size_h)+' · '+esc(fmtBackupAge(b.created))+' · '+esc(b.created)+'</div>'+
+    '</div>'+
+    '<div class="br-actions">'+
+    '<button data-act="restore" data-file="'+esc(b.filename)+'">Restore</button>'+
+    '<button class="dng" data-act="delete" data-file="'+esc(b.filename)+'">Delete</button>'+
+    '</div></div>'
+  )).join('');
+};
+
+const openBackupPanel=async()=>{
+  $('#backupPanel').classList.add('on');
+  $('#pw-app').classList.add('lock');
+  await loadBackups();
+  renderBackupList();
+};
+const closeBackupPanel=()=>{
+  $('#backupPanel').classList.remove('on');
+  $('#pw-app').classList.remove('lock');
+};
+
+const doCreateBackup=async()=>{
+  try{
+    await apiPost('create_backup',{});
+    toast('Backup created');
+    await loadBackups();
+    renderBackupList();
+  }catch(err){
+    if(err.code===401){appStarted=false;authShowLogin();return;}
+    toast(apiErrMsg(err));
+  }
+};
+
+let RESTORE_FILE=null;
+const openRestoreModal=filename=>{
+  RESTORE_FILE=filename;
+  $('#restoreInput').value='';
+  $('#restoreConfirmBtn').disabled=true;
+  $('#restoreModal').classList.add('on');
+  setTimeout(()=>{try{$('#restoreInput').focus()}catch(e){}},80);
+};
+const closeRestoreModal=()=>{
+  RESTORE_FILE=null;
+  $('#restoreModal').classList.remove('on');
+  $('#restoreInput').value='';
+  $('#restoreConfirmBtn').disabled=true;
+};
+const doRestoreBackup=async()=>{
+  if(!RESTORE_FILE)return;
+  const f=RESTORE_FILE;
+  try{
+    await apiPost('restore_backup',{filename:f});
+    closeRestoreModal();
+    showAppLoading();
+    toast('Restoring backup…');
+    setTimeout(()=>{location.reload();},400);
+  }catch(err){
+    if(err.code===401){appStarted=false;authShowLogin();return;}
+    toast(apiErrMsg(err));
+  }
+};
+const doDeleteBackup=filename=>{
+  openConfirm('Delete this backup permanently?','<p>This cannot be undone.</p>',async()=>{
+    try{
+      await apiPost('delete_backup',{filename});
+      toast('Backup deleted');
+      await loadBackups();
+      renderBackupList();
+    }catch(err){
+      if(err.code===401){appStarted=false;authShowLogin();return;}
+      toast(apiErrMsg(err));
+    }
+  });
+};
+
+['#settingsManageBackupsBtn','#sidebarBackupPill'].forEach(sel=>{
+  const b=$(sel);if(b)b.onclick=openBackupPanel;
+});
+$('#backupClose').onclick=closeBackupPanel;
+$('#backupPanel').addEventListener('click',e=>{if(e.target===e.currentTarget)closeBackupPanel()});
+$('#backupCreateBtn').onclick=doCreateBackup;
+const settingsBackupNow=$('#settingsBackupNowBtn');
+if(settingsBackupNow)settingsBackupNow.onclick=doCreateBackup;
+
+$('#backupList').addEventListener('click',e=>{
+  const btn=e.target.closest('button[data-act]');if(!btn)return;
+  const file=btn.dataset.file;const act=btn.dataset.act;
+  if(act==='restore')openRestoreModal(file);
+  else if(act==='delete')doDeleteBackup(file);
+});
+
+$('#restoreInput').addEventListener('input',()=>{
+  const v=$('#restoreInput').value.trim().toLowerCase();
+  $('#restoreConfirmBtn').disabled=(v!=='restore');
+});
+$('#restoreCancel').onclick=closeRestoreModal;
+$('#restoreModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeRestoreModal()});
+$('#restoreConfirmBtn').onclick=doRestoreBackup;
+D.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#restoreModal').classList.contains('on'))closeRestoreModal()});
+
 /* =========================================================
    BOOTSTRAP
    ========================================================= */
@@ -3248,12 +3515,14 @@ async function startApp(){
     updateDemoToggleUI();
     renderAll();
     updateTrashCountsUI(0,0);
+    loadBackups();
     hideAppLoading();
   }else{
     isDemoMode=false;
     try{
       await loadFromServer();
       await loadTrashFromServer();
+      loadBackups();
     }catch(err){
       if(err&&(err.code===401||err.message==='UNAUTHORIZED')){
         hideAppLoading();
