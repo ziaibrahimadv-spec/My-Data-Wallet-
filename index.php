@@ -312,13 +312,13 @@ body{background:#0F172A}
 #pw-app .grp .empty-state .es-t{font-size:15.5px;font-weight:600;color:var(--tx)}
 #pw-app .grp .empty-state .es-d{font-size:13px;color:var(--mu);line-height:1.5}
 #pw-app .cd{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r-m);display:flex;flex-direction:column;position:relative;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;box-shadow:0 2px 10px rgba(0,0,0,.03);height:clamp(280px,42vh,380px);overflow:hidden}
-#pw-app .cd:hover{border-color:var(--ac);transform:translateY(-4px);box-shadow:0 12px 28px rgba(95,136,239,.18),0 4px 10px rgba(0,0,0,.25)}
-#pw-app .cd .strip-top{background:var(--sf2);border-bottom:1px solid var(--bd);padding:10px 16px 10px 16px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:8px}
+#pw-app .cd:hover{border-color:var(--bd2);transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.22),0 4px 10px rgba(0,0,0,.18)}
+#pw-app .cd .strip-top{background:var(--sf2);border-bottom:1px solid var(--bd);padding:10px 16px 10px 16px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:14px}
 #pw-app .cd .cb{width:34px;height:34px;border-radius:7px;display:grid;place-items:center;color:var(--mu);background:var(--sf);border:1px solid var(--bd);transition:.15s;cursor:pointer;flex-shrink:0}
 #pw-app .cd .cb:hover{color:#fff;background:var(--ac);border-color:var(--ac)}
 #pw-app .cd .cb svg{width:14px;height:14px}
-#pw-app .cd .cd-view-sm{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;color:#F59E0B;background:transparent;border:1px solid #F59E0B;cursor:pointer;padding:0;flex-shrink:0;transition:.15s}
-#pw-app .cd .cd-view-sm:hover{background:#F59E0B;color:#fff}
+#pw-app .cd .cd-view-sm{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;color:#F59E0B;background:transparent;border:1px solid rgba(245,158,11,.45);cursor:pointer;padding:0;flex-shrink:0;transition:border-color .15s,color .15s,background .15s}
+#pw-app .cd .cd-view-sm:hover{background:#F59E0B;color:#fff;border-color:#F59E0B}
 #pw-app .cd .cd-view-sm svg{width:13px;height:13px}
 #pw-app #grid[data-view="list"] .cd .cd-view-sm{width:24px;height:24px}
 #pw-app #grid[data-view="list"] .cd .cd-view-sm svg{width:12px;height:12px}
@@ -334,14 +334,13 @@ body{background:#0F172A}
 #pw-app .cd .footer{margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 #pw-app .cd .footer-meta{display:inline-flex;align-items:center;gap:10px;min-width:0;flex:1;overflow:hidden}
 #pw-app .cd .card-date{font-size:11.5px;color:var(--mu);font-weight:400;letter-spacing:.2px;white-space:nowrap;flex-shrink:0}
-#pw-app .cd .project-capsule{display:inline-flex;align-items:center;gap:6px;font-size:11.77px;font-weight:600;border-radius:999px;padding:6px 13px;letter-spacing:.3px;line-height:1.3;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--mu);background:var(--sf2);border:1px solid var(--bd);transition:color .15s,border-color .15s}
-#pw-app .cd .project-capsule:hover{color:var(--tx);border-color:var(--bd2)}
+#pw-app .cd .project-capsule{display:inline-flex;align-items:center;gap:6px;font-size:11.77px;font-weight:600;border-radius:999px;padding:6px 13px;letter-spacing:.3px;line-height:1.3;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ac);background:var(--sf2);border:1px solid var(--bd)}
 #pw-app .cd .project-capsule svg{width:12.84px;height:12.84px;flex-shrink:0;opacity:.9}
-#pw-app .cd .view-btn{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:transparent;color:var(--ac);border:1.5px solid var(--ac);cursor:pointer;transition:background .15s,color .15s,transform .15s,box-shadow .15s;box-shadow:0 4px 12px rgba(95,136,239,.25)}
-#pw-app .cd .view-btn:hover{background:var(--ac);color:#FFFFFF;transform:translateX(3px);box-shadow:0 6px 18px rgba(95,136,239,.45)}
+#pw-app .cd .view-btn{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:transparent;color:var(--ac);border:1.5px solid var(--bd2);cursor:pointer;transition:background .15s,color .15s,transform .15s,border-color .15s;box-shadow:none}
+#pw-app .cd .view-btn:hover{background:var(--ac);color:#FFFFFF;transform:translateX(3px);border-color:var(--ac);box-shadow:0 4px 10px rgba(0,0,0,.25)}
 #pw-app .cd .view-btn:active{transform:translateX(1px) scale(.96)}
 #pw-app .cd .view-btn svg{width:18.5px;height:18.5px}
-#pw-app .cd .html-open-btn{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:transparent;color:var(--ac);border:1.5px solid var(--ac);cursor:pointer;padding:0;transition:background .15s,color .15s,transform .15s,box-shadow .15s;box-shadow:0 3px 10px rgba(95,136,239,.22)}
+#pw-app .cd .html-open-btn{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:transparent;color:var(--ac);border:1.5px solid var(--bd2);cursor:pointer;padding:0;transition:background .15s,color .15s,transform .15s,box-shadow .15s;box-shadow:none}
 #pw-app .cd .html-open-btn:hover{background:var(--ac);color:#FFFFFF;box-shadow:0 5px 14px rgba(95,136,239,.4)}
 #pw-app .cd .html-open-btn:active{transform:scale(.94)}
 #pw-app .cd .html-open-btn svg{width:15px;height:15px}
@@ -356,14 +355,14 @@ body{background:#0F172A}
 #pw-app .md.on{opacity:1;pointer-events:auto}
 #pw-app .mc{width:100%;height:100%;background:var(--sf);display:flex;flex-direction:column;overflow:hidden;transform:translateY(8px);transition:transform .18s}
 #pw-app .md.on .mc{transform:none}
-#pw-app .mh{flex:0 0 auto;padding:28px 38px;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;gap:18px;background:var(--sf)}
+#pw-app .mh{flex:0 0 auto;padding:16px 28px;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;gap:14px;background:var(--sf)}
 #pw-app .mh .mh-top{display:flex;align-items:center;gap:10px;margin-bottom:13px;flex-wrap:wrap}
 #pw-app .mh .cat{display:inline-block;font-size:11px;font-weight:600;color:#FFFFFF;background:var(--ac);border-radius:4px;padding:4px 11px;letter-spacing:2px;text-transform:uppercase}
 #pw-app .mh .mh-top .cat{margin-bottom:0}
 #pw-app .mh .htxt{flex:1;min-width:0}
-#pw-app .mh .mtitle{font-size:2.1rem;font-weight:700;letter-spacing:-.022em;line-height:1.2;color:var(--tx);margin-bottom:8px;text-align:center}
+#pw-app .mh .mtitle{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--tx);margin-bottom:4px;text-align:center}
 #pw-app .mh .mtitle span{color:var(--sub);font-weight:400}
-#pw-app .mh .mdesc{font-size:15.5px;line-height:1.62;color:var(--tx2);text-align:center}
+#pw-app .mh .mdesc{font-size:13px;line-height:1.55;color:var(--tx2);text-align:center}
 #pw-app .mh .mx{width:44px;height:44px;border-radius:9px;display:grid;place-items:center;background:var(--sf2);border:1px solid var(--bd);color:var(--tx2);flex:0 0 44px;transition:color .15s,border-color .15s}
 #pw-app .mh .mx:hover{color:var(--ac);border-color:var(--ac)}
 #pw-app .mh .mx svg{width:18px;height:18px}
@@ -388,7 +387,7 @@ body{background:#0F172A}
 #pw-app .mh .cat-edit{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:5px 11px;color:var(--tx);font-family:inherit;outline:none;width:100%;max-width:320px;transition:border-color .15s}
 #pw-app .mh .cat-edit:focus{border-color:var(--ac)}
 #pw-app .mh .mh-top .cat-edit{margin-bottom:0}
-#pw-app .mh .mtitle-edit{font-size:2.1rem;font-weight:700;letter-spacing:-.022em;line-height:1.2;color:var(--tx);background:var(--sf2);border:1px solid var(--bd);border-radius:6px;padding:8px 14px;width:100%;font-family:inherit;outline:none;margin-bottom:8px;transition:border-color .15s;text-align:center}
+#pw-app .mh .mtitle-edit{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--tx);background:var(--sf2);border:1px solid var(--bd);border-radius:6px;padding:8px 14px;width:100%;font-family:inherit;outline:none;margin-bottom:8px;transition:border-color .15s;text-align:center}
 #pw-app .mh .mtitle-edit:focus{border-color:var(--ac)}
 #pw-app .mh .mdesc-edit{font-size:15.5px;line-height:1.62;color:var(--tx2);background:var(--sf2);border:1px solid var(--bd);border-radius:6px;padding:9px 14px;width:100%;font-family:inherit;outline:none;transition:border-color .15s;text-align:center}
 #pw-app .mh .mdesc-edit:focus{border-color:var(--ac)}
@@ -744,7 +743,7 @@ body{background:#0F172A}
 
 @media (max-width:900px){#pw-app .apgrid{grid-template-columns:1fr}#pw-app .apnav{flex-direction:row;overflow-x:auto;position:static;padding-bottom:6px}#pw-app .apnav button{white-space:nowrap}}
 @media (max-width:768px){#pw-app .demo-banner{display:none!important}}
-@media (max-width:640px){#pw-app .apb{padding:18px}#pw-app .aph{padding:0 18px}#pw-app .aph h2{font-size:16px}#pw-app .dmh{flex-direction:column}#pw-app .mh{padding:22px 20px}#pw-app .mb{padding:24px 20px}#pw-app .mf{padding:16px 20px}#pw-app .mh .mtitle{font-size:1.5rem}#pw-app .mh .mtitle-edit{font-size:1.5rem}#pw-app .auth-card{padding:26px 22px 22px}}
+@media (max-width:640px){#pw-app .apb{padding:18px}#pw-app .aph{padding:0 18px}#pw-app .aph h2{font-size:16px}#pw-app .dmh{flex-direction:column}#pw-app .mh{padding:14px 18px}#pw-app .mb{padding:24px 20px}#pw-app .mf{padding:16px 20px}#pw-app .mh .mtitle{font-size:1.25rem}#pw-app .mh .mtitle-edit{font-size:1.25rem}#pw-app .auth-card{padding:26px 22px 22px}}
 @media (max-width:1000px){#pw-app .grp .gr{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:860px){#pw-app .sb{position:absolute;left:0;top:68px;bottom:0;z-index:700;transform:translateX(-100%);transition:transform .2s;box-shadow:0 0 0 9999px rgba(0,0,0,0)}#pw-app .sb.open{transform:none;box-shadow:0 0 0 9999px rgba(0,0,0,.38)}#pw-app.project-view .sb{display:none}#pw-app .mn{padding:26px 22px 52px}#pw-app .hd{padding:0 18px}#pw-app .hero{padding:28px 24px 24px;margin-bottom:32px}#pw-app .hero-head h2{font-size:38px}#pw-app .grp>.sh h3{font-size:1.35rem}#pw-app .grp>.sh .sh-sub{font-size:13px}#pw-app .cd .prompt-title{font-size:1.15rem}#pw-app .md{top:0}#pw-app .proj-bar{flex-direction:column;align-items:flex-start}#pw-app .proj-bar-left h3{font-size:1.5rem}#pw-app .mframe{height:60vh;min-height:320px}#pw-app .sb-trash{opacity:1}#pw-app .trash-bar{left:18px;right:18px;bottom:16px}}
 @media (max-width:640px){#pw-app .grp .gr{grid-template-columns:1fr}#pw-app .hero{padding:22px 18px 20px;margin-bottom:26px}#pw-app .hero-head h2{font-size:31px}#pw-app .hero-bar{flex-direction:column;align-items:stretch;gap:10px}#pw-app .hero-bar .btn{height:46px;justify-content:center}#pw-app .grp>.sh h3{font-size:1.2rem}#pw-app .grp>.sh .sh-sub{font-size:12.5px}#pw-app .cd{height:auto;min-height:0}#pw-app .cd .prompt-title{font-size:1.05rem;padding-left:13px;-webkit-line-clamp:unset}#pw-app .cd .prompt-desc{padding-left:16px;-webkit-line-clamp:unset}#pw-app .bt h1{font-size:19px}#pw-app .type-tiles{grid-template-columns:repeat(2,1fr)}#pw-app .mframe{height:55vh;min-height:280px}#pw-app .ta .trash-btn .tc{display:none}}
@@ -761,12 +760,15 @@ body{background:#0F172A}
 #pw-app .md.editing .modal-notes-edit{display:block!important}
 #pw-app #grid .grp+.grp{border-top:1px solid var(--bd);padding-top:34px;margin-top:24px}
 #pw-app #notesModal .dmc{max-width:520px}
+#pw-app .auth-icon svg{width:96px;height:96px}
+#pw-app #passModal .dmi{width:69px;height:69px;flex:0 0 69px;border-radius:14px}
+#pw-app #passModal .dmi svg{width:33px;height:33px}
 </style>
 
 <!-- Auth overlay (Login) -->
 <div class="auth-overlay" id="authOverlay" role="dialog" aria-modal="true">
 <div class="auth-card">
-<div class="auth-icon"><svg><use href="#p-shield"/></svg></div>
+<div class="auth-icon"><svg><use href="#p-shield-check"/></svg></div>
 <div class="auth-title">My Data Wallet</div>
 <div class="auth-sub">Web and AI Data Wallet</div>
 <form id="authForm" autocomplete="on" novalidate>
@@ -774,7 +776,7 @@ body{background:#0F172A}
 <div class="auth-field">
 <label for="authPin">Passcode</label>
 <div class="auth-input-wrap">
-<input type="text" id="authPin" name="passcode" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" class="auth-pin">
+<input type="password" id="authPin" name="passcode" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" class="auth-pin">
 </div>
 </div>
 <div class="auth-row">
@@ -1043,7 +1045,8 @@ body{background:#0F172A}
 </div>
 <div class="apb">
 <div class="trash-nav" id="trashNav">
-<button class="on" data-tab="cards">Cards (<span id="trashCardsN">0</span>)</button>
+<button class="on" data-tab="all">All</button>
+<button data-tab="cards">Cards (<span id="trashCardsN">0</span>)</button>
 <button data-tab="projects">Projects (<span id="trashProjectsN">0</span>)</button>
 </div>
 <div id="trashCardsPane">
@@ -1083,7 +1086,7 @@ body{background:#0F172A}
 <div class="dm" id="passModal" role="dialog" aria-modal="true">
 <div class="dmc">
 <div class="dmh">
-<div class="dmi warn"><svg><use href="#p-lock"/></svg></div>
+<div class="dmi warn"><svg><use href="#p-shield-check"/></svg></div>
 <div class="txt">
 <h3>Change Passcode</h3>
 <p>Update your 4-digit sign-in passcode.</p>
@@ -1920,7 +1923,7 @@ $('#acSaveBtn').onclick=async()=>{
 /* =========================================================
    TRASH
    ========================================================= */
-let TRASH_TAB='cards';
+let TRASH_TAB='all';
 let TRASH_SELECTED_CARDS=new Set();
 let TRASH_SELECTED_PROJECTS=new Set();
 const updateTrashCountsUI=(c,p)=>{
@@ -1982,15 +1985,21 @@ updateTrashBar();
 };
 const updateTrashBar=()=>{
 const bar=$('#trashBar');const left=$('#trashBarLeft');if(!bar)return;
-const n=TRASH_TAB==='cards'?TRASH_SELECTED_CARDS.size:TRASH_SELECTED_PROJECTS.size;
+const n = (TRASH_TAB==='projects')
+  ? TRASH_SELECTED_PROJECTS.size
+  : (TRASH_TAB==='cards'
+     ? TRASH_SELECTED_CARDS.size
+     : (TRASH_SELECTED_CARDS.size + TRASH_SELECTED_PROJECTS.size));
 bar.classList.toggle('on',n>0);
 if(left)left.textContent=n+' selected';
 };
 const setTrashTab=t=>{
 TRASH_TAB=t;
 $$('#trashNav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
-$('#trashCardsPane').style.display=t==='cards'?'':'none';
-$('#trashProjectsPane').style.display=t==='projects'?'':'none';
+const showCards = (t==='all'||t==='cards');
+const showProjects = (t==='all'||t==='projects');
+$('#trashCardsPane').style.display = showCards?'':'none';
+$('#trashProjectsPane').style.display = showProjects?'':'none';
 updateTrashBar();
 };
 const openTrash=async()=>{
@@ -1998,7 +2007,7 @@ $('#trashPanel').classList.add('on');
 $('#pw-app').classList.add('lock');
 TRASH_SELECTED_CARDS.clear();
 TRASH_SELECTED_PROJECTS.clear();
-setTrashTab('cards');
+setTrashTab('all');
 if(!isDemoMode){
   try{await loadTrashFromServer();}catch(err){
     if(err&&err.code===401){appStarted=false;authShowLogin();return;}
@@ -2101,22 +2110,26 @@ const doPurgeProject=(id)=>{
   });
 };
 $('#trashDeleteSelected').onclick=()=>{
-  const isCards=TRASH_TAB==='cards';
-  const ids=isCards?[...TRASH_SELECTED_CARDS]:[...TRASH_SELECTED_PROJECTS];
-  if(!ids.length)return;
-  const n=ids.length;
-  const endpoint = isCards ? 'purge_card' : 'purge_project';
-  openConfirm('Permanently delete '+n+' selected items?','<p>This cannot be undone.</p>',async()=>{
+  const doCards    = (TRASH_TAB==='all' || TRASH_TAB==='cards');
+  const doProjects = (TRASH_TAB==='all' || TRASH_TAB==='projects');
+  const cardIds = doCards    ? [...TRASH_SELECTED_CARDS]    : [];
+  const projIds = doProjects ? [...TRASH_SELECTED_PROJECTS] : [];
+  const totalN  = cardIds.length + projIds.length;
+  if(!totalN)return;
+  openConfirm('Permanently delete '+totalN+' selected items?','<p>This cannot be undone.</p>',async()=>{
     try{
-      for(const id of ids){
-        await apiPost(endpoint,{id:Number(id)});
+      for(const id of cardIds){
+        await apiPost('purge_card',{id:Number(id)});
       }
-      if(isCards)TRASH_SELECTED_CARDS.clear();
-      else TRASH_SELECTED_PROJECTS.clear();
+      for(const id of projIds){
+        await apiPost('purge_project',{id:Number(id)});
+      }
+      TRASH_SELECTED_CARDS.clear();
+      TRASH_SELECTED_PROJECTS.clear();
       await loadTrashFromServer();
       refreshTrashLists();
       updateTrashBar();
-      toast(n+' item'+(n===1?'':'s')+' permanently deleted');
+      toast(totalN+' item'+(totalN===1?'':'s')+' permanently deleted');
     }catch(err){
       if(err.code===401){appStarted=false;authShowLogin();return;}
       toast(apiErrMsg(err));
